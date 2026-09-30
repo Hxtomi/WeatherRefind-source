@@ -1,0 +1,58 @@
+plugins {
+    id 'fabric-loom' version '1.10.5'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+repositories {
+    maven {
+        name = 'Sponge'
+        url = 'https://repo.spongepowered.org/repository/maven-public/'
+    }
+}
+
+loom {
+    mixin {
+        defaultRefmapName = "weatherrefind.refmap.json"
+        useLegacyMixinAp = true
+    }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings loom.officialMojangMappings()
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+}
+
+processResources {
+    inputs.property "version", project.version
+
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    it.options.release = 17
+}
+
+java {
+    withSourcesJar()
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+
+sourceSets.main.java.srcDir "../../common/src/main/java"
+jar { archiveFileName = "WeatherRefind-fabric-1.20.1-v${project.version}.jar" }
+
+jar { from("../../LICENSE") { rename { "LICENSE" } } }
+tasks.matching { it.name == "sourcesJar" }.configureEach { from("../../LICENSE") { rename { "LICENSE" } } }

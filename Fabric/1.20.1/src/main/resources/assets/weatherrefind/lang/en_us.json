@@ -1,0 +1,8 @@
+{
+  "weatherrefind.mode": "Weather: %s",
+  "weatherrefind.mode.auto": "Auto",
+  "weatherrefind.mode.custom": "Weather Refind",
+  "weatherrefind.mode.vanilla": "Vanilla",
+  "weatherrefind.auto.info": "Auto uses vanilla weather with Iris/Oculus shaders.",
+  "weatherrefind.vanilla.info": "Vanilla restores rain, snow and weather sounds."
+}

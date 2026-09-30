@@ -1,0 +1,77 @@
+plugins {
+    id 'eclipse'
+    id 'idea'
+    id 'net.minecraftforge.gradle' version '6.0.54'
+    id 'org.spongepowered.mixin' version '0.7.38'
+}
+
+version = '2.0'
+group = 'dev.norevy.weatherrefind'
+
+base {
+    archivesName = 'weatherrefind'
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+
+    copyIdeResources = true
+
+    runs {
+        configureEach {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${project.projectDir}/build/createSrgToMcp/output.srg"
+            mods {
+                weatherrefind {
+                    source sourceSets.main
+                }
+            }
+        }
+        client {}
+        server {}
+    }
+}
+
+mixin {
+    add sourceSets.main, 'weatherrefind.refmap.json'
+    config 'weatherrefind.mixins.json'
+}
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.4.10'
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
+
+jar {
+    manifest {
+        attributes([
+            'Specification-Title'    : 'WeatherRefind',
+            'Specification-Vendor'   : 'Norevy',
+            'Specification-Version'  : '1',
+            'Implementation-Title'   : project.name,
+            'Implementation-Version' : project.jar.archiveVersion,
+            'Implementation-Vendor'  : 'Norevy',
+        ])
+    }
+    finalizedBy 'reobfJar'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+sourceSets.main.java.srcDir "../../common/src/main/java"
+jar { archiveFileName = "WeatherRefind-forge-1.20.1-v${project.version}.jar" }
+
+jar { from("../../LICENSE") { rename { "LICENSE" } } }
+tasks.matching { it.name == "sourcesJar" }.configureEach { from("../../LICENSE") { rename { "LICENSE" } } }

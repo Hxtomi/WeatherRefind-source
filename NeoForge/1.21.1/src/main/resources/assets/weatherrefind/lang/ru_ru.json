@@ -1,0 +1,8 @@
+{
+  "weatherrefind.mode": "Погода: %s",
+  "weatherrefind.mode.auto": "Авто",
+  "weatherrefind.mode.custom": "Weather Refind",
+  "weatherrefind.mode.vanilla": "Ванильная",
+  "weatherrefind.auto.info": "Авто: ванильная погода с шейдерами Iris/Oculus.",
+  "weatherrefind.vanilla.info": "Ванильный режим возвращает осадки и их звуки."
+}

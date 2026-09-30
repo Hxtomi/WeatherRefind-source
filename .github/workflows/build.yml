@@ -1,0 +1,48 @@
+name: Build
+
+on:
+  push:
+    paths-ignore:
+      - '**/*.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - port: Forge/1.20.1
+            java: '17'
+          - port: NeoForge/1.21.1
+            java: '21'
+          - port: Fabric/1.20.1
+            java: '21'
+          - port: Fabric/1.21.11
+            java: '25'
+          - port: Fabric/26.1
+            java: '25'
+          - port: Fabric/26.2
+            java: '25'
+          - port: Fabric/26.3
+            java: '25'
+          - port: NeoForge/26.2
+            java: '25'
+          - port: NeoForge/26.3
+            java: '25'
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+      - name: Build
+        working-directory: ${{ matrix.port }}
+        run: ./gradlew build --no-daemon

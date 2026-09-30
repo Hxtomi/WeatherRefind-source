@@ -1,0 +1,28 @@
+modLoader = "javafml"
+loaderVersion = "[2,)"
+license = "PolyForm-Shield-1.0.0"
+
+[[mods]]
+modId = "weatherrefind"
+version = "2.0"
+displayName = "WeatherRefind"
+displayTest = "IGNORE_ALL_VERSION"
+description = '''WeatherRefind is a lightweight weather particle overhaul.
+'''
+authors = "Norevy"
+
+[[dependencies.weatherrefind]]
+modId = "neoforge"
+type = "required"
+ordering = "NONE"
+side = "CLIENT"
+
+[[dependencies.weatherrefind]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21.1,1.21.2)"
+ordering = "NONE"
+side = "CLIENT"
+
+[[mixins]]
+config = "weatherrefind.mixins.json"

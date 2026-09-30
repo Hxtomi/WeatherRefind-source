@@ -1,0 +1,16 @@
+plugins { id 'net.neoforged.moddev' version '2.0.147' }
+version='2.0'
+group='dev.norevy.weatherrefind'
+base { archivesName='weatherrefind' }
+java { toolchain.languageVersion=JavaLanguageVersion.of(25); withSourcesJar() }
+neoForge {
+ enable { version='26.2.0.88'; disableRecompilation=true }
+ runs { client { client() } }
+ mods { weatherrefind { sourceSet sourceSets.main } }
+}
+sourceSets.main.java.srcDir '../../common/src/main/java'
+tasks.withType(JavaCompile).configureEach { options.encoding='UTF-8'; options.release=25 }
+jar { archiveFileName='WeatherRefind-neoforge-26.2-v2.0.jar' }
+
+jar { from("../../LICENSE") { rename { "LICENSE" } } }
+tasks.matching { it.name == "sourcesJar" }.configureEach { from("../../LICENSE") { rename { "LICENSE" } } }

@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "package": "dev.norevy.weatherrefind.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [],
+  "client": [
+    "RainRendererMixin",
+    "WeatherOptionsMixin"
+  ],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1,
+    "maxShiftBy": 3
+  },
+  "refmap": "weatherrefind.refmap.json"
+}
