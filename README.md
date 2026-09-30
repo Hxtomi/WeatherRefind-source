@@ -1,10 +1,12 @@
 # Weather Refind
 
 [![CurseForge downloads](https://img.shields.io/curseforge/dt/1500089?label=CurseForge&color=F16436)](https://www.curseforge.com/minecraft/mc-mods/weather-refined)
+[![Modrinth downloads](https://img.shields.io/modrinth/dt/Qyzsewil?label=Modrinth&color=177c47)](https://modrinth.com/mod/weatherrefind)
+[![Created on CurseForge](https://img.shields.io/badge/Created-Mar_31%2C_2026-54748D)](https://www.curseforge.com/minecraft/mc-mods/weather-refined)
 
 Weather Refind is a client-side weather particle overhaul for MC. It replaces rain and snow with configurable particles, including three snowflake shapes.
 
-Public source code covers **v2.0 only**. Source code, history and release files from earlier versions are not included here. The download counter covers the whole CurseForge project, including earlier releases.
+Public source code covers **v2.0 only**. Source code, history and release files from earlier versions are not included here. Download counts cover the whole project, including earlier releases.
 
 | MC version | Source code |
 | --- | --- |
@@ -19,7 +21,7 @@ In **Options → WR**, choose AUTO, CUSTOM or VANILLA. AUTO uses vanilla precipi
 
 Install the mod on the client. Fabric ports also require Fabric API. Use the build matching your MC version and loader; the 1.20.1 ports do not cover every 1.20.x release.
 
-Get released builds on [CurseForge](https://www.curseforge.com/minecraft/mc-mods/weather-refined) or [Modrinth](https://modrinth.com/user/norevy/mods). See [BUILDING.md](BUILDING.md) for build instructions.
+Get released builds on [CurseForge](https://www.curseforge.com/minecraft/mc-mods/weather-refined) or [Modrinth](https://modrinth.com/mod/weatherrefind). See [BUILDING.md](BUILDING.md) for build instructions.
 
 [![Modpack Friendly](https://img.shields.io/badge/Modpack-Friendly-8FAF9A)](LICENSE)
 
